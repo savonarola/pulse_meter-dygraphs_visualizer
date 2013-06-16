@@ -20,7 +20,7 @@ The gem contains customizable web interface for [pulse-meter](https://github.com
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'pulse-meter-visualizer'
+gem 'pulse-meter-visualizer', require: 'pulse_meter_visualizer'
 ```
 
 And then execute:
