@@ -1,7 +1,7 @@
-[![Gem Version](https://badge.fury.io/rb/pulse-meter-visualizer.png)](http://badge.fury.io/rb/pulse-meter-visualizer)
-[![Build Status](https://secure.travis-ci.org/savonarola/pulse-meter-visualizer.png)](http://travis-ci.org/savonarola/pulse-meter-visualizer)
-[![Dependency Status](https://gemnasium.com/savonarola/pulse-meter-visualizer.png)](https://gemnasium.com/savonarola/pulse-meter-visualizer)
-[![Code Climate](https://codeclimate.com/github/savonarola/pulse-meter-visualizer.png)](https://codeclimate.com/github/savonarola/pulse-meter-visualizer)
+[![Gem Version](https://badge.fury.io/rb/pulse_meter_visualizer.png)](http://badge.fury.io/rb/pulse_meter_visualizer)
+[![Build Status](https://secure.travis-ci.org/savonarola/pulse_meter_visualizer.png)](http://travis-ci.org/savonarola/pulse_meter_visualizer)
+[![Dependency Status](https://gemnasium.com/savonarola/pulse_meter_visualizer.png)](https://gemnasium.com/savonarola/pulse_meter_visualizer)
+[![Code Climate](https://codeclimate.com/github/savonarola/pulse_meter_visualizer.png)](https://codeclimate.com/github/savonarola/pulse_meter_visualizer)
 
 # PulseMeter
 
@@ -9,7 +9,7 @@ PulseMeter is a gem for fast and convenient realtime aggregating of software int
 
 ## Live Demo
 
-A small live demo for [pulse-meter](https://github.com/savonarola/pulse-meter) gem is located here: [rubybox.ru](http://rubybox.ru), its source code can be found here: [https://github.com/savonarola/pulse-meter-visualizer-demo](https://github.com/savonarola/pulse-meter-visualizer-demo)
+A small live demo for [pulse-meter](https://github.com/savonarola/pulse-meter) gem is located here: [rubybox.ru](http://rubybox.ru), its source code can be found here: [https://github.com/savonarola/pulse-meter-demo](https://github.com/savonarola/pulse-meter-demo)
 
 ## Features
 
@@ -20,7 +20,7 @@ The gem contains customizable web interface for [pulse-meter](https://github.com
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'pulse-meter-visualizer', require: 'pulse_meter_visualizer'
+gem 'pulse_meter_visualizer'
 ```
 
 And then execute:
@@ -29,7 +29,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install pulse-meter-visualizer
+    $ gem install pulse_meter_visualizer
 
 ## Contributing
 

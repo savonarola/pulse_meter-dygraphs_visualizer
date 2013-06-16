@@ -6,17 +6,17 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{
     Customizable web interface for lightweight Redis-based metrics aggregator and processor PulseMeter
   }
-  gem.homepage      = "https://github.com/savonarola/pulse-meter-visualizer"
+  gem.homepage      = "https://github.com/savonarola/pulse_meter_visualizer"
 
   gem.required_ruby_version = '>= 1.9.2'
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
-  gem.name          = "pulse-meter-visualizer"
+  gem.name          = "pulse_meter_visualizer"
   gem.require_paths = ["lib"]
-  gem.version       = "0.4.10"
+  gem.version       = "0.4.11"
 
-  gem.add_runtime_dependency('pulse-meter-core')
+  gem.add_runtime_dependency('pulse_meter_core')
   gem.add_runtime_dependency('gon-sinatra')
   gem.add_runtime_dependency('haml')
   gem.add_runtime_dependency('sinatra')
