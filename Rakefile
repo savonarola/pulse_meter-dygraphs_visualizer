@@ -17,14 +17,14 @@ ROOT = File.dirname(__FILE__)
 task :default => :spec
 
 namespace :coffee do
-  COFFEE_PATH = "#{ROOT}/lib/pulse-meter/visualize/coffee"
+  COFFEE_PATH = "#{ROOT}/lib/pulse_meter/visualize/coffee"
 
   def compile_js
     Tilt::CoffeeScriptTemplate.default_bare = true
     env = Sprockets::Environment.new
     env.append_path COFFEE_PATH
     data = env['application.coffee']
-    open("#{ROOT}/lib/pulse-meter/visualize/public/js/application.js", "w").write(data)
+    open("#{ROOT}/lib/pulse_meter/visualize/public/js/application.js", "w").write(data)
     puts "application.js compiled"
   end
 
