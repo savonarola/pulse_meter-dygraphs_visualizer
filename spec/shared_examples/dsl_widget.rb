@@ -67,7 +67,7 @@ shared_examples_for "dsl widget" do
 
     it "should raise exception if width is invalid" do
       expect { w.width -1 }.to raise_exception(PulseMeter::Visualize::DSL::BadWidgetWidth)
-      expect { w.width 11 }.to raise_exception(PulseMeter::Visualize::DSL::BadWidgetWidth)
+      expect { w.width 13 }.to raise_exception(PulseMeter::Visualize::DSL::BadWidgetWidth)
     end
   end
 

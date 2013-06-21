@@ -2,7 +2,7 @@ module PulseMeter
   module Visualize
     module DSL
       class Widget < Base
-        MAX_WIDTH = 10
+        MAX_WIDTH = 12
 
         self.data_class = PulseMeter::Visualize::Widget
 
