@@ -54,7 +54,7 @@ select#extend-timespan-val {
   display: inline;
 }
 
-[class*="span"] {
+#widgets [class*="span"] {
   margin-left: 0;
 }
 
