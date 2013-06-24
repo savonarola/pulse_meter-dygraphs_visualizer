@@ -36,6 +36,11 @@
 }
 
 #dynamic-plotarea {
+  margin-left: 10px;
+}
+
+#errors {
+  margin-left: 10px;
 }
 
 .ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
