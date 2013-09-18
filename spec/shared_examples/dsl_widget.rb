@@ -10,7 +10,7 @@ shared_examples_for "dsl widget" do
   describe '.new' do
     it "should set default value for width papram" do
       wid = w.to_data
-      wid.width.should == PulseMeter::Visualize::DSL::Widget::MAX_WIDTH
+      wid.width.should == PulseMeter::DygraphsVisualize::DSL::Widget::MAX_WIDTH
     end
 
     it "should set title param from .new argument" do
@@ -66,8 +66,8 @@ shared_examples_for "dsl widget" do
     end
 
     it "should raise exception if width is invalid" do
-      expect { w.width -1 }.to raise_exception(PulseMeter::Visualize::DSL::BadWidgetWidth)
-      expect { w.width 13 }.to raise_exception(PulseMeter::Visualize::DSL::BadWidgetWidth)
+      expect { w.width -1 }.to raise_exception(PulseMeter::DygraphsVisualize::DSL::BadWidgetWidth)
+      expect { w.width 13 }.to raise_exception(PulseMeter::DygraphsVisualize::DSL::BadWidgetWidth)
     end
   end
 
@@ -77,14 +77,14 @@ shared_examples_for "dsl widget" do
       w.to_data.redraw_interval.should == 5
     end
     it "should raise exception if redraw_interval is negative" do
-      expect{ w.redraw_interval(-1) }.to raise_exception(PulseMeter::Visualize::DSL::BadWidgetRedrawInterval)
+      expect{ w.redraw_interval(-1) }.to raise_exception(PulseMeter::DygraphsVisualize::DSL::BadWidgetRedrawInterval)
     end
 
   end
 
   describe "#to_data" do
     it "should convert dsl data to widget" do
-      w.to_data.should be_kind_of(PulseMeter::Visualize::Widget)
+      w.to_data.should be_kind_of(PulseMeter::DygraphsVisualize::Widget)
     end
   end
 

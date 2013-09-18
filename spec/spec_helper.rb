@@ -8,7 +8,7 @@ Bundler.require(:default, :test, :development)
 
 SimpleCov.start
 
-require 'pulse_meter_visualizer'
+require 'pulse_meter_dygraphs_visualizer'
 PulseMeter.redis = MockRedis.new
 
 require 'rack/test'
