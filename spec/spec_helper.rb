@@ -4,7 +4,7 @@ $:.unshift File.expand_path('../../lib/', __FILE__)
 
 ROOT = File.expand_path('../..', __FILE__)
 
-Bundler.require(:default, :test, :development)
+Bundler.require(:test, :development)
 
 SimpleCov.start
 
