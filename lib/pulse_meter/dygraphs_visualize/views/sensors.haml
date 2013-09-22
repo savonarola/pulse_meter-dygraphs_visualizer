@@ -24,7 +24,7 @@
 
 %script#dynamic-widget-plotarea{type: 'text/template'}
   .well
-    #chart
+    #chart-widget
       %h3 Choose sensors to plot 
     #dynamic-chart-controls
       .form-inline
@@ -60,10 +60,9 @@
     #sensor-controls.form-horizontal
       %p.form-inline
         Chart type 
-        %select#chart-type{value: 'area'}
-          %option{value: 'area'} Area
+        %select#chart-type{value: 'line'}
           %option{value: 'line'} Line
-          %option{value: 'table'} Table
+          %option{value: 'stack'} Stack
         %button#draw.btn.btn-mini.btn-primary
           %i.icon-play
           Draw

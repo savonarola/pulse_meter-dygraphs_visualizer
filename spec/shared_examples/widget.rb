@@ -32,19 +32,19 @@ shared_examples_for "widget" do
     w.width width
     w.sensor :a_sensor, color: a_color
     w.sensor :b_sensor, color: b_color
-    w.gchart_options a: 1
+    w.dygraphs_options a: 1
     w.timespan timespan
     w.to_data
   end
 
   describe "#data" do
-    it "should contain type, title, redraw_interval, width, gchart_options, timespan attriutes" do
+    it "should contain type, title, redraw_interval, width, dygraphs_options, timespan attriutes" do
       wdata = widget.data
       wdata[:type].should == class_name.downcase
       wdata[:title].should == widget_name
       wdata[:redraw_interval].should == redraw_interval
       wdata[:width].should == width
-      wdata[:gchart_options].should == {a: 1}
+      wdata[:dygraphs_options][:a].should == 1
       wdata[:timespan].should == timespan
       wdata[:interval].should == interval
     end

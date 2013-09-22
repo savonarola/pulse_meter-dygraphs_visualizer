@@ -4,7 +4,7 @@ module PulseMeter
       def initialize(opts)
         super
         @opts[:widgets] ||= []
-        @opts[:gchart_options] ||= {}
+        @opts[:dygraphs_options] ||= {}
       end
 
       def widget_data(widget_id, opts = {})

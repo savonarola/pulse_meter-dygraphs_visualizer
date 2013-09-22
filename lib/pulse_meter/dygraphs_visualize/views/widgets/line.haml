@@ -5,6 +5,9 @@
       %button#refresh.btn.btn-mini
         %i.icon-refresh
         Refresh
+      %label
+        Refresh:
+        %input.btn-mini#need-refresh{type: :checkbox, checked: :true}
       %a#configure-button.btn.btn-mini{href: "#configure", role: 'button', 'data-toggle' => 'modal'} 
         %i.icon-wrench
         Configure...
@@ -13,20 +16,6 @@
           %button.close{type: 'button', 'data-dismiss' => 'modal', 'aria-hidden' => 'true'} &times;
           %h3 Configure
         .modal-body
-          %p
-            %label
-              Cutoff min:
-              %input.btn-mini#cutoff-min
-            %span.space
-            %label
-              Cutoff max:
-              %input.btn-mini#cutoff-max
-          %hr
-          %p
-            %label
-              Refresh:
-              %input.btn-mini#need-refresh{type: :checkbox, checked: :true}
-          %hr
           %p
             %label
               Timespan:

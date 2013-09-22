@@ -1,0 +1,1 @@
+class StackPresenter extends SeriesPresenter

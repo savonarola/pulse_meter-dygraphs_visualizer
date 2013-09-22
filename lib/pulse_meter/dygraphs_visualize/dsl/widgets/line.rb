@@ -3,6 +3,7 @@ module PulseMeter
     module DSL
       module Widgets
         class Line < PulseMeter::DygraphsVisualize::DSL::Widget
+
           self.data_class = PulseMeter::DygraphsVisualize::Widgets::Line
 
           string_setter :values_label

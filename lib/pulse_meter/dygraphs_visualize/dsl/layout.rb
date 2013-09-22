@@ -14,7 +14,7 @@ module PulseMeter
 
         string_setter :title
         bool_setter :use_utc
-        hash_extender :gchart_options
+        hash_extender :dygraphs_options
 
         deprecated_setter :outlier_color
         deprecated_setter :highchart_options

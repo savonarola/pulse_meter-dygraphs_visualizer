@@ -6,7 +6,7 @@ describe PulseMeter::DygraphsVisualize::Layout do
     l.page "page1" do |p|
       p.line "w1"
       p.line "w2"
-      p.gchart_options({a: 1})
+      p.dygraphs_options({a: 1})
     end
     l.page "page2" do |p|
       p.line "w3"
@@ -18,8 +18,8 @@ describe PulseMeter::DygraphsVisualize::Layout do
   describe "#page_infos" do
     it "should return list of page infos with ids" do
       layout.page_infos.should == [
-        {title: "page1", id: 1, gchart_options: {a: 1}},
-        {title: "page2", id: 2, gchart_options: {}}
+        {title: "page1", id: 1, dygraphs_options: {a: 1}},
+        {title: "page2", id: 2, dygraphs_options: {}}
       ]
     end
   end
@@ -28,9 +28,9 @@ describe PulseMeter::DygraphsVisualize::Layout do
     it "should return layout options" do
       ldsl = PulseMeter::DygraphsVisualize::DSL::Layout.new
       ldsl.use_utc true
-      ldsl.gchart_options({a: 1})
+      ldsl.dygraphs_options({a: 1})
       l = ldsl.to_data
-      l.options.should == {use_utc: true, gchart_options: {a: 1}}
+      l.options.should == {use_utc: true, dygraphs_options: {a: 1}}
     end
   end
 

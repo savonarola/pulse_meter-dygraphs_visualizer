@@ -88,18 +88,18 @@ shared_examples_for "dsl widget" do
     end
   end
 
-  describe "#gchart_options" do
-    it "should add options to gchart_options hash" do
-      w.gchart_options a: 1
-      w.gchart_options b: 2
-      w.to_data.gchart_options.should == {a: 1, b: 2}
+  describe "#dygraphs_options" do
+    it "should add options to dygraphs_options hash" do
+      w.dygraphs_options a: 1
+      w.dygraphs_options b: 2
+      w.to_data.dygraphs_options.should include(a: 1, b: 2)
     end
   end
 
   describe "any anknown method" do
-    it "should add options to gchart_options hash" do
+    it "should add options to dygraphs_options hash" do
       w.foobar 123
-      w.to_data.gchart_options.should == {foobar: 123}
+      w.to_data.dygraphs_options[:foobar].should == 123
     end
   end
 end

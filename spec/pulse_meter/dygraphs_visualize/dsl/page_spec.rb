@@ -15,7 +15,7 @@ describe PulseMeter::DygraphsVisualize::DSL::Page do
     end
   end
 
-  [:area, :line, :table, :pie, :gauge].each do |widget_type|
+  [:line, :stack].each do |widget_type|
 
     describe "##{widget_type}" do
       it "should add #{widget_type} widget initialized by args to widgets" do

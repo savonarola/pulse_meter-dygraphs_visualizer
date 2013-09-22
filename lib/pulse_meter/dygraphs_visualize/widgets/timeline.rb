@@ -54,7 +54,7 @@ module PulseMeter
           sensor_datas.each do |sensor_data|
             sensor_data.each do |tl|
               titles << tl[:name]
-              series_options << {color: tl[:color]}
+              series_options << {color: PulseMeter::DygraphsVisualize::SeriesColor.new(tl).color}
               datas << tl[:data]
             end
           end
@@ -98,16 +98,9 @@ module PulseMeter
 
       end
 
-      class Area < Timeline; end
+      class Stack < Timeline; end
       class Line < Timeline; end
       
-      class Table < Timeline 
-        def data(options = {})
-          res = super(options)      
-          res[:series].delete(options)
-          res
-        end
-      end
     end
   end
 end

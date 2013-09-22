@@ -6,7 +6,7 @@ module PulseMeter
       def initialize(opts)
         super
         @opts[:pages] ||= []
-        @opts[:gchart_options] ||= {}
+        @opts[:dygraphs_options] ||= {}
       end
 
       def to_app
@@ -19,7 +19,7 @@ module PulseMeter
 					res << {
 						id: i + 1,
 						title: p.title,
-            gchart_options: p.gchart_options
+            dygraphs_options: p.dygraphs_options
 					}
 				end
 				res
@@ -28,7 +28,7 @@ module PulseMeter
 			def options
 				{
 					use_utc: use_utc,
-          gchart_options: gchart_options
+          dygraphs_options: dygraphs_options
         }
       end
 

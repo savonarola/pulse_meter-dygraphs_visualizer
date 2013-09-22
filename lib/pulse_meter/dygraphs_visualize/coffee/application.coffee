@@ -7,13 +7,10 @@
 #= require collections/sensor_info_list
 #= require collections/widget_list
 #= require presenters/widget
-#= require presenters/pie
 #= require presenters/timeline
 #= require presenters/series
 #= require presenters/line
-#= require presenters/area
-#= require presenters/table
-#= require presenters/gauge
+#= require presenters/stack
 #= require views/page_title
 #= require views/page_titles
 #= require views/sensor_info_list

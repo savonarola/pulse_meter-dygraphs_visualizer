@@ -1,10 +1,13 @@
-%script.widget-template{type: 'text/template', 'data-widget-type' => 'table'}
+%script.widget-template{type: 'text/template', 'data-widget-type' => 'stack'}
   #plotarea
   #chart-controls
     .form-inline
       %button#refresh.btn.btn-mini
         %i.icon-refresh
         Refresh
+      %label
+        Refresh:
+        %input.btn-mini#need-refresh{type: :checkbox, checked: :true}
       %a#configure-button.btn.btn-mini{href: "#configure", role: 'button', 'data-toggle' => 'modal'} 
         %i.icon-wrench
         Configure...
@@ -13,11 +16,6 @@
           %button.close{type: 'button', 'data-dismiss' => 'modal', 'aria-hidden' => 'true'} &times;
           %h3 Configure
         .modal-body
-          %p
-            %label
-              Refresh:
-              %input.btn-mini#need-refresh{type: :checkbox, checked: :true}
-          %hr
           %p
             %label
               Timespan:

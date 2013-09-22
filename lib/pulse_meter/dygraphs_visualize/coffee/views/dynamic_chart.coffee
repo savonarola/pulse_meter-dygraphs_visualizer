@@ -19,6 +19,7 @@ DynamicChartView = Backbone.View.extend {
 	}
 
 	template: -> _.template($("#dynamic-widget-plotarea").html())
+	chartContainerTemplate: '<div id="chart"></div><div id="legend"></div>'
 
 	render: ->
 		@$el.html(@template()())
@@ -73,7 +74,7 @@ DynamicChartView = Backbone.View.extend {
 
 
 	chartContainer: ->
-		@$el.find('#chart')[0]
+		$(@$el.find('#chart-widget')[0])
 
 	update: ->
 		@widget.forceUpdate() if @sensors.length > 0
@@ -86,6 +87,6 @@ DynamicChartView = Backbone.View.extend {
 		@widget.set('type', @type)
 		
 		@presenter = null
-		$(@chartContainer()).empty()
+		@chartContainer().html(@chartContainerTemplate)
 		@widget.forceUpdate()
 }

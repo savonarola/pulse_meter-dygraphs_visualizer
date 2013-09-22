@@ -11,20 +11,13 @@ module PulseMeter
 
         string_setter :title
 
-        dsl_array_extender :widgets, :area,  PulseMeter::DygraphsVisualize::DSL::Widgets::Area
         dsl_array_extender :widgets, :line,  PulseMeter::DygraphsVisualize::DSL::Widgets::Line
-        dsl_array_extender :widgets, :pie,   PulseMeter::DygraphsVisualize::DSL::Widgets::Pie
-        dsl_array_extender :widgets, :table, PulseMeter::DygraphsVisualize::DSL::Widgets::Table
-        dsl_array_extender :widgets, :gauge, PulseMeter::DygraphsVisualize::DSL::Widgets::Gauge
+        dsl_array_extender :widgets, :stack,  PulseMeter::DygraphsVisualize::DSL::Widgets::Stack
 
-        hash_extender :gchart_options
+        hash_extender :dygraphs_options
 
         def spline(*args)
           STDERR.puts "DEPRECATION: spline widget is no longer available."
-        end
-
-        def highchart_options(*args)
-          STDERR.puts "DEPRECATION: highchart_options DSL helper does not take effect anymore, use gchart_options instead"
         end
       end
     end

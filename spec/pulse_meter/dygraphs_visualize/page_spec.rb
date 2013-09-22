@@ -22,7 +22,7 @@ describe PulseMeter::DygraphsVisualize::Page do
 
   let(:page) do
     p = PulseMeter::DygraphsVisualize::DSL::Page.new(page_title)
-    p.pie(widget_name) do |w|
+    p.line(widget_name) do |w|
       w.redraw_interval redraw_interval
       w.values_label values_label
       w.width width
@@ -68,10 +68,8 @@ describe PulseMeter::DygraphsVisualize::Page do
       Timecop.freeze(interval_start + 2 * interval - 1) do
         page.widget_data(0)[:series].should ==
           {
-            data: [
-              [a_sensor.annotation, 12],
-              [b_sensor.annotation, 33]
-            ],
+            titles: [a_sensor.annotation, b_sensor.annotation],
+            rows: [[interval_start.to_i * 1000, 12, 33]],
             options: [
               {color: a_color},
               {color: b_color}
@@ -91,10 +89,8 @@ describe PulseMeter::DygraphsVisualize::Page do
       Timecop.freeze(interval_start + 2 * interval - 1) do
         page.widget_data(0, timespan: 0)[:series].should ==
           {
-            data: [
-              [a_sensor.annotation, 12],
-              [b_sensor.annotation, 33]
-            ],
+            titles: [a_sensor.annotation, b_sensor.annotation],
+            rows: [],
             options: [
               {color: a_color},
               {color: b_color}
@@ -111,8 +107,6 @@ describe PulseMeter::DygraphsVisualize::Page do
           }
 
       end
-
-
     end
   end
 
@@ -128,10 +122,8 @@ describe PulseMeter::DygraphsVisualize::Page do
 
         page.widget_datas.map{|h| h[:series]}.should == [
           {
-            data: [
-              [a_sensor.annotation, 12],
-              [b_sensor.annotation, 33]
-            ],
+            titles: [a_sensor.annotation, b_sensor.annotation],
+            rows: [[interval_start.to_i * 1000, 12, 33]],
             options: [
               {color: a_color},
               {color: b_color}

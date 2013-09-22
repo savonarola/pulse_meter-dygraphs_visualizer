@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe PulseMeter::DygraphsVisualize::DSL::Widgets::Table do
+describe PulseMeter::DygraphsVisualize::DSL::Widgets::Stack do
   it_should_behave_like "dsl widget"
 
   let(:interval){ 100 }
@@ -11,8 +11,26 @@ describe PulseMeter::DygraphsVisualize::DSL::Widgets::Table do
   let(:w){ described_class.new(widget_name)  }
 
   describe "#to_data" do
-    it "should produce PulseMeter::DygraphsVisualize::Widgets::Area class" do
-      w.to_data.should be_kind_of(PulseMeter::DygraphsVisualize::Widgets::Table)
+    let(:data){ w.to_data }
+
+    it "should produce PulseMeter::DygraphsVisualize::Widgets::Stack class" do
+      data.should be_kind_of(PulseMeter::DygraphsVisualize::Widgets::Stack)
+    end
+
+    describe "dygraphs_options" do
+      let(:dygraphs_options){ data.dygraphs_options }
+
+      it "should set stack Dygraphs options" do
+        dygraphs_options[:stacked_graph].should be_true
+        dygraphs_options[:stacked_graph_na_n_fill].should == 'inside'
+      end
+    end
+  end
+
+  describe "#values_label" do
+    it "should set values_label" do
+      w.values_label "some y-axis legend"
+      w.to_data.values_label.should == "some y-axis legend"
     end
   end
 
@@ -32,5 +50,6 @@ describe PulseMeter::DygraphsVisualize::DSL::Widgets::Table do
       expect{ w.timespan(-1) }.to raise_exception(PulseMeter::DygraphsVisualize::DSL::BadWidgetTimeSpan)
     end
   end
+
 end
 

@@ -49,7 +49,7 @@ WidgetView = Backbone.View.extend {
 		@chartView.render()
 
 	updateChart: ->
-		@chartView.updateData(@cutoffMin(), @cutoffMax())
+		@chartView.updateData()
 
 	setIds: ->
 		@$el.find('#configure-button').prop('href', "#configure-#{@model.id}")
@@ -74,14 +74,6 @@ WidgetView = Backbone.View.extend {
 				showOtherMonths: true
 				selectOtherMonths: true
 		@$el.find("#end-time input").prop("disabled", true)
-
-	cutoffMin: ->
-		val = parseFloat(@controlValue('#cutoff-min'))
-		if _.isNaN(val) then null else val
-
-	cutoffMax: ->
-		val = parseFloat(@controlValue('#cutoff-max'))
-		if _.isNaN(val) then null else val
 
 	controlValue: (id) ->
 		val = @$el.find(id).first().val()

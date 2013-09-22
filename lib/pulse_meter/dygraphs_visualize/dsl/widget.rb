@@ -12,7 +12,7 @@ module PulseMeter
           self.width(MAX_WIDTH)
         end
 
-        hash_extender :gchart_options
+        hash_extender :dygraphs_options
        
         string_setter :title
 
@@ -27,7 +27,7 @@ module PulseMeter
         dsl_array_extender :sensors, :sensor, PulseMeter::DygraphsVisualize::DSL::Sensor
 
         def method_missing(name, value)
-          gchart_options(name => value)
+          dygraphs_options(name => value)
         end
 
       end

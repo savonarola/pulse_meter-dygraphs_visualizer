@@ -1,5 +1,6 @@
 Widget = Backbone.Model.extend {
 	initialize: ->
+		@updating = false
 		@needRefresh = true
 		@setNextFetch()
 		@timespanInc = 0
@@ -45,10 +46,18 @@ Widget = Backbone.Model.extend {
 			@forceUpdate()
 			@setNextFetch()
 
-	forceUpdate: ->
-		@fetch {
-			success: (model, response) ->
-				model.trigger('redraw')
-		}
+	setUpdated: ->
+		@updating = false
 
+	forceUpdate: ->
+		return if @updating
+		@updating = true
+		xhr = @fetch {
+			success: (model, response) =>
+				@trigger('redraw')
+		}
+		xhr.always () =>
+			@updating = false
+		xhr.fail (xhr, textStatus, errorThrown) =>
+			console.log "xhr fail", @get('id'), textStatus, errorThrown
 }

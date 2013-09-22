@@ -1,7 +1,8 @@
 class WidgetPresenter
-	constructor: (@pageInfos, @model, el) ->
-		chartClass = @chartClass()
-		@chart = new chartClass(el)
+	constructor: (@pageInfos, @model, @el) ->
+		@chartEl = @el.find('#chart')[0]
+		@legendEl = @el.find('#legend')[0]
+		@chart = new Dygraph.GVizChart(@chartEl)
 		@draw()
 
 	get: (arg) -> @model.get(arg)
@@ -14,47 +15,29 @@ class WidgetPresenter
 		else
 			0
 	
-	options: ->
-		{
-			title: @get('title')
-			height: 300
-			chartArea:
-				left: 10
-		}
+	options: -> {
+		labelsDiv: @legendEl
+		labelsSeparateLines: false
+		rightGap: 30
+	}
 
 	mergedOptions: ->
 		pageOptions = if @pageInfos.selected()
-			@pageInfos.selected().get('gchartOptions')
+			@pageInfos.selected().get('dygraphsOptions')
 		else
 			{}
 
 		$.extend(true,
 			@options(),
-			@globalOptions.gchartOptions,
+			@globalOptions.dygraphsOptions,
 			pageOptions,
-			@get('gchartOptions')
+			@get('dygraphsOptions')
 		)
 
 	data: -> new google.visualization.DataTable
 
-	chartClass: -> google.visualization[@visualization]
-
-	cutoff: ->
-	
-	cutoffValue: (v, min, max) ->
-		if v?
-			if min? && v < min
-				min
-			else if max? && v > max
-				max
-			else
-				v
-		else
-			0
-
-	draw: (min, max) ->
-		@cutoff(min, max)
-		@chart.draw(@data(), @mergedOptions())
+	draw: ->
+		@chart.draw @data(), @mergedOptions()
 
 WidgetPresenter.create = (pageInfos, model, el) ->
 	type = model.get('type')

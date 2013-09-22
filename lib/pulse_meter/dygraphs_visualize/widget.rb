@@ -14,7 +14,7 @@ module PulseMeter
           title: title,
           redraw_interval: redraw_interval,
           width: width,
-          gchart_options: gchart_options,
+          dygraphs_options: dygraphs_options,
           values_title: values_label
         }
       end
