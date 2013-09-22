@@ -18,13 +18,11 @@ task :default => :spec
 
 namespace :coffee do
   COFFEE_PATH = "#{ROOT}/lib/pulse_meter/dygraphs_visualize/coffee"
-  JS_PATH = "#{ROOT}/lib/pulse_meter/dygraphs_visualize/js"
 
   def compile_js
     Tilt::CoffeeScriptTemplate.default_bare = true
     env = Sprockets::Environment.new
     env.append_path COFFEE_PATH
-    env.append_path JS_PATH
     data = env['application.coffee']
     open("#{ROOT}/lib/pulse_meter/dygraphs_visualize/public/js/application.js", "w").write(data)
     puts "application.js compiled"
