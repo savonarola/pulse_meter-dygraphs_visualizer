@@ -20,8 +20,6 @@ class WidgetPresenter
 		labelsSeparateLines: false
 		rightGap: 30
 		highlightCircleSize: 2
-		strokeWidth: 1
-		strokeBorderWidth: 1
 
 		highlightSeriesOpts:
 			strokeWidth: 2
