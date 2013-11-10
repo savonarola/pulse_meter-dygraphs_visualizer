@@ -19,6 +19,14 @@ class WidgetPresenter
 		labelsDiv: @legendEl
 		labelsSeparateLines: false
 		rightGap: 30
+		highlightCircleSize: 2
+		strokeWidth: 1
+		strokeBorderWidth: 1
+
+		highlightSeriesOpts:
+			strokeWidth: 2
+			strokeBorderWidth: 1
+			highlightCircleSize: 5
 	}
 
 	mergedOptions: ->
@@ -29,7 +37,7 @@ class WidgetPresenter
 
 		$.extend(true,
 			@options(),
-			@globalOptions.dygraphsOptions,
+			@globalOptions().dygraphsOptions,
 			pageOptions,
 			@get('dygraphsOptions')
 		)
