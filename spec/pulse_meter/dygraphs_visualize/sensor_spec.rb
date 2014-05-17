@@ -77,6 +77,18 @@ describe PulseMeter::DygraphsVisualize::Sensor do
     end
   end
 
+  describe "valid?" do
+    subject{ checked_sensor.valid? }
+    context "when sensor exists" do
+      let(:checked_sensor){ sensor }
+      it{ should be_true }
+    end
+    context "when sensor does not exist" do
+      let(:checked_sensor){ bad_sensor }
+      it{ should be_false }
+    end
+  end
+
   describe "#timeline_data" do
     before(:each) do
       Timecop.freeze(interval_start) do

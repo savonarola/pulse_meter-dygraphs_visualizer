@@ -3,7 +3,7 @@ shared_examples_for "dsl widget" do
   let(:interval){ 100 }
   let(:name) { "some_sensor" }
   let!(:sensor){ PulseMeter::Sensor::Timelined::Max.new(name, :ttl => 1000, :interval => interval) }
-  
+
   let(:widget_name){ "some_widget" }
   let(:w){ described_class.new(widget_name)  }
 
@@ -21,10 +21,10 @@ shared_examples_for "dsl widget" do
 
   describe "#process_args" do
     it "should set sensor by :sensor param" do
-      w.process_args :sensor => :sss
+      w.process_args :sensor => :some_sensor
       sensors = w.to_data.sensors
       sensors.size.should == 1
-      sensors.first.name.to_s.should == 'sss'
+      sensors.first.name.to_s.should == 'some_sensor'
     end
 
     it "should set title by :title param" do
@@ -40,6 +40,10 @@ shared_examples_for "dsl widget" do
   end
 
   describe "#sensor" do
+    let!(:s1){ PulseMeter::Sensor::Timelined::Max.new('s1', :ttl => 1000, :interval => interval) }
+    let!(:s2){ PulseMeter::Sensor::Timelined::Max.new('s2', :ttl => 1000, :interval => interval) }
+
+
     it "should add sensor" do
       w.sensor :s1
       w.sensor :s2

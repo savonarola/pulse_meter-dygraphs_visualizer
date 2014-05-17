@@ -38,6 +38,18 @@ shared_examples_for "widget" do
   end
 
   describe "#data" do
+    context "when widget has nonexistant sensor" do
+      let(:broken_widget) do
+        w = dsl_class.new(widget_name)
+        w.sensor :c_sensor
+        w.to_data
+      end
+
+      it "handles nonexistant widgets seamlessly" do
+        expect{broken_widget.data}.not_to raise_exception
+      end
+    end
+
     it "should contain type, title, redraw_interval, width, dygraphs_options, timespan attriutes" do
       wdata = widget.data
       wdata[:type].should == class_name.downcase
@@ -61,7 +73,7 @@ shared_examples_for "widget" do
         @current_time = interval_start + 2 * interval - 1
       end
 
-      it "should contain valid series" do
+      it "contains valid series" do
         Timecop.freeze(@current_time) do
           widget.data[:series].should ==
             {
@@ -75,14 +87,14 @@ shared_examples_for "widget" do
         end
       end
 
-      it "should accept custom timespan" do
+      it "accepts custom timespan" do
         Timecop.freeze(@current_time + interval) do
           widget.data(timespan: timespan)[:series][:rows].size.should == 1
           widget.data(timespan: timespan + interval)[:series][:rows].size.should == 2
         end
       end
 
-      it "should accept start_time and end_time" do
+      it "accepts start_time and end_time" do
         Timecop.freeze(@current_time + interval) do
           widget.data(start_time: (Time.now - timespan).to_i)[:series][:rows].size.should == 1
           widget.data(

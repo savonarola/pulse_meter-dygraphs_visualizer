@@ -8,6 +8,10 @@ module PulseMeter
         @opts[:sensors] ||= []
       end
 
+      def sensors
+        @opts[:sensors].select{|s| s.valid? }
+      end
+
       def data
         {
           type: type,
