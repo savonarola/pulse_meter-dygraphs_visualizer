@@ -23,8 +23,12 @@
   .navbar.navbar-fixed-top
     .navbar-inner
       .container-fluid
-        %a.brand{href: '#/custom'}= @title
-        %ul.nav#page-titles
+        %table
+          %tr
+            %td.brand-container
+              %a.brand{href: '#/custom'}= @title
+            %td
+              %ul.nav#page-titles
 
   .container-fluid#main
     .row-fluid#widgets

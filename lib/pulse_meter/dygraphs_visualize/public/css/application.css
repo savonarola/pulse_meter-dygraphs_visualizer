@@ -55,6 +55,20 @@ select#extend-timespan-val {
   display: inline;
 }
 
+#page-titles {
+  height: 40px;
+  overflow: hidden;
+}
+
+#page-titles:hover {
+  height: auto;
+}
+
+.brand-container {
+  white-space: nowrap;
+  vertical-align: top;
+}
+
 #widgets [class*="span"] {
   margin-left: 0;
 }
