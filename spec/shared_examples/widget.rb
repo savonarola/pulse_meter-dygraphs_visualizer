@@ -50,7 +50,7 @@ shared_examples_for "widget" do
       end
     end
 
-    it "should contain type, title, redraw_interval, width, dygraphs_options, timespan attriutes" do
+    it "contains type, title, redraw_interval, width, dygraphs_options, timespan attriutes" do
       wdata = widget.data
       expect(wdata[:type]).to eq(class_name.downcase)
       expect(wdata[:title]).to eq(widget_name)

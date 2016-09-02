@@ -57,14 +57,14 @@ describe PulseMeter::DygraphsVisualize::Page do
 
   describe "#widget_data" do
 
-    it "should generate correct data of single widget" do
+    it "generates correct data of single widget" do
       Timecop.freeze(interval_start + 2 * interval - 1) do
         expect(page.widget_data(0)[:id]).to eq(1)
         expect(page.widget_data(1)[:id]).to eq(2)
       end
     end
 
-    it "should generate correct data of single widget" do
+    it "generates correct data of single widget" do
       Timecop.freeze(interval_start + 2 * interval - 1) do
         expect(page.widget_data(0)[:series]).to eq(
           {
@@ -115,13 +115,13 @@ describe PulseMeter::DygraphsVisualize::Page do
   end
 
   describe "#widget_datas" do
-    it "should generate correct ids for all widgets" do
+    it "generates correct ids for all widgets" do
       Timecop.freeze(interval_start + 2 * interval - 1) do
         expect(page.widget_datas.map{|h| h[:id]}).to eq([1,2])
       end
     end
 
-    it "should generate correct series data of all widgets" do
+    it "generates correct series data of all widgets" do
       Timecop.freeze(interval_start + 2 * interval - 1) do
 
         expect(page.widget_datas.map{|h| h[:series]}).to eq([

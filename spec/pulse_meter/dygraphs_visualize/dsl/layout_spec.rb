@@ -7,7 +7,7 @@ describe PulseMeter::DygraphsVisualize::DSL::Layout do
   let(:layout){ described_class.new }
 
   describe '.new' do
-    it "should initialize pages, title, use_utc, dygraphs_options" do
+    it "initializes pages, title, use_utc, dygraphs_options" do
       l = layout.to_data
       expect(l.title).to eq(PulseMeter::DygraphsVisualize::DSL::Layout::DEFAULT_TITLE)
       expect(l.pages).to eq([])
@@ -17,7 +17,7 @@ describe PulseMeter::DygraphsVisualize::DSL::Layout do
   end
 
   describe "#page" do
-    it "should add page constructed by block to pages" do
+    it "adds page constructed by block to pages" do
       layout.page "My Foo Page" do |p|
         p.stack "foo_widget", sensor: sensor_name
         p.line "bar_widget" do |w|
@@ -35,28 +35,28 @@ describe PulseMeter::DygraphsVisualize::DSL::Layout do
   end
 
   describe "#title" do
-    it "should set layout title" do
+    it "sets layout title" do
       layout.title "Foo Title"
       expect(layout.to_data.title).to eq('Foo Title')
     end
   end
 
   describe "#use_utc" do
-    it "should set use_utc" do
+    it "sets use_utc" do
       layout.use_utc false
       expect(layout.to_data.use_utc).to be_falsey
     end
   end
 
   describe "#dygraphs_options" do
-    it "should set dygraphs_options" do
+    it "sets dygraphs_options" do
       layout.dygraphs_options({b: 1})
       expect(layout.to_data.dygraphs_options).to eq({b: 1})
     end
   end
 
   describe "#to_data" do
-    it "should convert layout dsl data to DygraphsVisualize::Layout" do
+    it "converts layout dsl data to DygraphsVisualize::Layout" do
       expect(layout.to_data).to be_kind_of(PulseMeter::DygraphsVisualize::Layout)
     end
   end

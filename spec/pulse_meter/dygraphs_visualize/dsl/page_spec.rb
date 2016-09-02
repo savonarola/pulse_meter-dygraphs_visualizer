@@ -8,7 +8,7 @@ describe PulseMeter::DygraphsVisualize::DSL::Page do
   let(:page){ PulseMeter::DygraphsVisualize::DSL::Page.new(title) }
 
   describe '.new' do
-    it "should initialize title and widgets" do
+    it "initializes title and widgets" do
       p = page.to_data  
       expect(p.title).to eq(title)
       expect(p.widgets).to eq([])
@@ -18,7 +18,7 @@ describe PulseMeter::DygraphsVisualize::DSL::Page do
   [:line, :stack].each do |widget_type|
 
     describe "##{widget_type}" do
-      it "should add #{widget_type} widget initialized by args to widgets" do
+      it "adds #{widget_type} widget initialized by args to widgets" do
         page.send(widget_type, :some_widget_name, sensor: sensor_name, width: 7)
         w = page.to_data.widgets.first
         expect(w.width).to eq(7)
@@ -26,7 +26,7 @@ describe PulseMeter::DygraphsVisualize::DSL::Page do
         expect(w.sensors.first.name).to eq(sensor_name)
       end
       
-      it "should add #{widget_type} widget initialized by block" do
+      it "adds #{widget_type} widget initialized by block" do
         page.send(widget_type, :some_widget_name) do |w|
           w.sensor(sensor_name)
           w.sensor(sensor_name)
@@ -46,14 +46,14 @@ describe PulseMeter::DygraphsVisualize::DSL::Page do
   end
 
   describe "#title" do
-    it "should set page title" do
+    it "sets page title" do
       page.title "Foo Title"
       expect(page.to_data.title).to eq('Foo Title')
     end
   end
 
   describe "#to_data" do
-    it "should convert DSL data to DygraphsVisualize::Page" do
+    it "converts DSL data to DygraphsVisualize::Page" do
       expect(page.to_data).to be_kind_of(PulseMeter::DygraphsVisualize::Page)
     end
   end

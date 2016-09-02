@@ -15,21 +15,21 @@ describe PulseMeter::DygraphsVisualize::Sensor do
 
   describe '#last_value' do
     context "when sensor does not exist" do
-      it "should raise RestoreError" do
+      it "raises RestoreError" do
         expect{ bad_sensor.last_value(Time.now) }.to raise_exception(PulseMeter::RestoreError)
       end
     end
 
 
     context "when sensor has no data" do
-      it "should return nil" do
+      it "returns nil" do
         expect(sensor.last_value(Time.now)).to be_nil
       end
     end
 
     context "when sensor has data" do
       context "when need_incomplete arg is true" do
-        it "should return last value" do
+        it "returns last value" do
           Timecop.freeze(interval_start) do
             real_sensor.event(101)
           end
@@ -40,7 +40,7 @@ describe PulseMeter::DygraphsVisualize::Sensor do
       end
 
       context "when need_incomplete arg is false" do
-        it "should return last complete value" do
+        it "returns last complete value" do
           Timecop.freeze(interval_start) do
             real_sensor.event(101)
           end
@@ -59,12 +59,12 @@ describe PulseMeter::DygraphsVisualize::Sensor do
   describe "#last_point_data" do
 
     context "when sensor does not exist" do
-      it "should raise RestoreError" do
+      it "raises RestoreError" do
         expect{ bad_sensor.last_point_data(Time.now) }.to raise_exception(PulseMeter::RestoreError)
       end
     end
 
-    it "should return last value with annotation (and color)" do
+    it "returns last value with annotation (and color)" do
       Timecop.freeze(interval_start) do
         real_sensor.event(101)
       end
@@ -100,25 +100,25 @@ describe PulseMeter::DygraphsVisualize::Sensor do
     end
 
     context "when sensor does not exist" do
-      it "should raise RestoreError" do
+      it "raises RestoreError" do
         expect{ bad_sensor.timeline_data(Time.now - interval, Time.now) }.to raise_exception(PulseMeter::RestoreError)
       end
     end
 
 
     describe "returned value" do
-      it "should contain sensor annotation" do
+      it "contains sensor annotation" do
         Timecop.freeze(interval_start + interval + 1) do
           expect(sensor.timeline_data(Time.now - interval, Time.now).first[:name]).to eq(annotation)
         end
       end
-      it "should contain sensor color" do
+      it "contains sensor color" do
         Timecop.freeze(interval_start + interval + 1) do
           expect(sensor_with_color.timeline_data(Time.now - interval, Time.now).first[:color]).to eq(color)
         end
       end
 
-      it "should contain [interval_start, value] pairs for each interval" do
+      it "contains [interval_start, value] pairs for each interval" do
         Timecop.freeze(interval_start + interval + 1) do
           data = sensor.timeline_data(Time.now - interval * 2, Time.now)
           expect(data.first[:data]).to eq([{x: interval_start.to_i * 1000, y: 101}])

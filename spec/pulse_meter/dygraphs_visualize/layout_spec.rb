@@ -16,7 +16,7 @@ describe PulseMeter::DygraphsVisualize::Layout do
   end
 
   describe "#page_infos" do
-    it "should return list of page infos with ids" do
+    it "returns list of page infos with ids" do
       expect(layout.page_infos).to eq([
         {title: "page1", id: 1, dygraphs_options: {a: 1}},
         {title: "page2", id: 2, dygraphs_options: {}}
@@ -25,7 +25,7 @@ describe PulseMeter::DygraphsVisualize::Layout do
   end
 
   describe "#options" do
-    it "should return layout options" do
+    it "returns layout options" do
       ldsl = PulseMeter::DygraphsVisualize::DSL::Layout.new
       ldsl.use_utc true
       ldsl.dygraphs_options({a: 1})
@@ -35,7 +35,7 @@ describe PulseMeter::DygraphsVisualize::Layout do
   end
 
   describe "#widget" do
-    it "should return data for correct widget" do
+    it "returns data for correct widget" do
       w = layout.widget(1, 0)
       expect(w).to include(id: 1, title: "w3")
       w = layout.widget(0, 1, timespan: 123)
@@ -44,7 +44,7 @@ describe PulseMeter::DygraphsVisualize::Layout do
   end
 
   describe "#widgets" do
-    it "should return data for correct widgets of a page" do
+    it "returns data for correct widgets of a page" do
       datas = layout.widgets(1)
       expect(datas[0]).to include(id: 1, title: "w3")
       expect(datas[1]).to include(id: 2, title: "w4")

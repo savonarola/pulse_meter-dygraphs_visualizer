@@ -20,15 +20,15 @@ describe PulseMeter::DygraphsVisualize::SeriesExtractor do
 
     let(:extractor) {PulseMeter::DygraphsVisualize.extractor(simple_sensor)}
 
-    it "should be created for simple sensors" do
+    it "bes created for simple sensors" do
       expect(extractor).to be_kind_of(PulseMeter::DygraphsVisualize::SeriesExtractor::Simple)
     end
 
-    it "should create point data correctly" do
+    it "creates point data correctly" do
       expect(extractor.point_data(123)).to eq([{y: 123, name: 'simple sensor'}])
     end
 
-    it "should create timeline data correctly" do
+    it "creates timeline data correctly" do
       tl_data = [
         PulseMeter::SensorData.new(Time.at(1), 11),
         PulseMeter::SensorData.new(Time.at(2), "22")
@@ -44,18 +44,18 @@ describe PulseMeter::DygraphsVisualize::SeriesExtractor do
   describe "hash extractor" do
     let(:extractor) {PulseMeter::DygraphsVisualize.extractor(hashed_sensor)}
 
-    it "should be created for hash sensors" do
+    it "bes created for hash sensors" do
       expect(extractor).to be_kind_of(PulseMeter::DygraphsVisualize::SeriesExtractor::Hashed)
     end
 
-    it "should create point data correctly" do
+    it "creates point data correctly" do
       expect(extractor.point_data('{"x": 123, "y": 321}')).to eq([
         {y: 123, name: 'hashed sensor: x'},
         {y: 321, name: 'hashed sensor: y'}
       ])
     end
 
-    it "should create timeline data correctly" do
+    it "creates timeline data correctly" do
       tl_data = [
         PulseMeter::SensorData.new(Time.at(1), {"a" => 5, "b" => 6}),
         PulseMeter::SensorData.new(Time.at(2), '{"c": 7, "b": 6}')

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe PulseMeter::DygraphsVisualizer do
   describe "::draw" do
-    it "should generate correct layout with passed block" do
+    it "generates correct layout with passed block" do
       layout = described_class.draw do |l|
 
         l.title "My Gauges"
