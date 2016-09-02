@@ -32,7 +32,7 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency('rake')
   gem.add_development_dependency('rb-fsevent')
   gem.add_development_dependency('redcarpet')
-  gem.add_development_dependency('rspec')
+  gem.add_development_dependency('rspec', '~> 2.0')
   gem.add_development_dependency('simplecov')
   gem.add_development_dependency('sprockets')
   gem.add_development_dependency('timecop')
