@@ -10,12 +10,12 @@ shared_examples_for "dsl widget" do
   describe '.new' do
     it "should set default value for width papram" do
       wid = w.to_data
-      wid.width.should == PulseMeter::DygraphsVisualize::DSL::Widget::MAX_WIDTH
+      expect(wid.width).to eq(PulseMeter::DygraphsVisualize::DSL::Widget::MAX_WIDTH)
     end
 
     it "should set title param from .new argument" do
       wid = w.to_data
-      wid.title.should == widget_name
+      expect(wid.title).to eq(widget_name)
     end
   end
 
@@ -23,18 +23,18 @@ shared_examples_for "dsl widget" do
     it "should set sensor by :sensor param" do
       w.process_args :sensor => :some_sensor
       sensors = w.to_data.sensors
-      sensors.size.should == 1
-      sensors.first.name.to_s.should == 'some_sensor'
+      expect(sensors.size).to eq(1)
+      expect(sensors.first.name.to_s).to eq('some_sensor')
     end
 
     it "should set title by :title param" do
       w.process_args :title => 'Title XXX'
-      w.to_data.title.should == 'Title XXX'
+      expect(w.to_data.title).to eq('Title XXX')
     end
 
     it "should set width by :width param" do
       w.process_args :width => 5
-      w.to_data.width.should == 5
+      expect(w.to_data.width).to eq(5)
     end
 
   end
@@ -48,25 +48,25 @@ shared_examples_for "dsl widget" do
       w.sensor :s1
       w.sensor :s2
       sensors = w.to_data.sensors
-      sensors.size.should == 2
-      sensors.first.name.to_s.should == 's1'
-      sensors.last.name.to_s.should == 's2'
+      expect(sensors.size).to eq(2)
+      expect(sensors.first.name.to_s).to eq('s1')
+      expect(sensors.last.name.to_s).to eq('s2')
     end
   end
 
   describe "#title" do
     it "should set title" do
       w.title 'Title XXX'
-      w.to_data.title.should == 'Title XXX'
+      expect(w.to_data.title).to eq('Title XXX')
       w.title 'Title YYY'
-      w.to_data.title.should == 'Title YYY'
+      expect(w.to_data.title).to eq('Title YYY')
     end
   end
 
   describe "#width" do
     it "should set width" do
       w.width 6
-      w.to_data.width.should == 6
+      expect(w.to_data.width).to eq(6)
     end
 
     it "should raise exception if width is invalid" do
@@ -78,7 +78,7 @@ shared_examples_for "dsl widget" do
   describe "#redraw_interval" do
     it "should set redraw_interval" do
       w.redraw_interval 5
-      w.to_data.redraw_interval.should == 5
+      expect(w.to_data.redraw_interval).to eq(5)
     end
     it "should raise exception if redraw_interval is negative" do
       expect{ w.redraw_interval(-1) }.to raise_exception(PulseMeter::DygraphsVisualize::DSL::BadWidgetRedrawInterval)
@@ -88,7 +88,7 @@ shared_examples_for "dsl widget" do
 
   describe "#to_data" do
     it "should convert dsl data to widget" do
-      w.to_data.should be_kind_of(PulseMeter::DygraphsVisualize::Widget)
+      expect(w.to_data).to be_kind_of(PulseMeter::DygraphsVisualize::Widget)
     end
   end
 
@@ -96,14 +96,14 @@ shared_examples_for "dsl widget" do
     it "should add options to dygraphs_options hash" do
       w.dygraphs_options a: 1
       w.dygraphs_options b: 2
-      w.to_data.dygraphs_options.should include(a: 1, b: 2)
+      expect(w.to_data.dygraphs_options).to include(a: 1, b: 2)
     end
   end
 
   describe "any anknown method" do
     it "should add options to dygraphs_options hash" do
       w.foobar 123
-      w.to_data.dygraphs_options[:foobar].should == 123
+      expect(w.to_data.dygraphs_options[:foobar]).to eq(123)
     end
   end
 end

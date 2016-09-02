@@ -16,12 +16,12 @@ describe PulseMeter::DygraphsVisualize::App do
   
   it "responds to /" do
     get '/'
-    last_response.should be_ok
-    last_response.body.should include("Foo meters")
+    expect(last_response).to be_ok
+    expect(last_response.body).to include("Foo meters")
   end
 
   it "responds to /application.js" do
     get '/js/application.js'
-    last_response.should be_ok
+    expect(last_response).to be_ok
   end
 end

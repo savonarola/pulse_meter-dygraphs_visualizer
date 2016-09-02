@@ -10,8 +10,8 @@ describe PulseMeter::DygraphsVisualize::DSL::Page do
   describe '.new' do
     it "should initialize title and widgets" do
       p = page.to_data  
-      p.title.should == title
-      p.widgets.should == []
+      expect(p.title).to eq(title)
+      expect(p.widgets).to eq([])
     end
   end
 
@@ -21,9 +21,9 @@ describe PulseMeter::DygraphsVisualize::DSL::Page do
       it "should add #{widget_type} widget initialized by args to widgets" do
         page.send(widget_type, :some_widget_name, sensor: sensor_name, width: 7)
         w = page.to_data.widgets.first
-        w.width.should == 7
-        w.title.should == "some_widget_name"
-        w.sensors.first.name.should == sensor_name
+        expect(w.width).to eq(7)
+        expect(w.title).to eq("some_widget_name")
+        expect(w.sensors.first.name).to eq(sensor_name)
       end
       
       it "should add #{widget_type} widget initialized by block" do
@@ -34,12 +34,12 @@ describe PulseMeter::DygraphsVisualize::DSL::Page do
           w.width 7
         end
         w = page.to_data.widgets.first
-        w.type.should == widget_type.to_s
-        w.width.should == 7
-        w.title.should == "foo_widget"
-        w.sensors.size.should == 2
-        w.sensors.first.name.should == sensor_name
-        w.sensors.last.name.should == sensor_name
+        expect(w.type).to eq(widget_type.to_s)
+        expect(w.width).to eq(7)
+        expect(w.title).to eq("foo_widget")
+        expect(w.sensors.size).to eq(2)
+        expect(w.sensors.first.name).to eq(sensor_name)
+        expect(w.sensors.last.name).to eq(sensor_name)
       end
     end
   
@@ -48,13 +48,13 @@ describe PulseMeter::DygraphsVisualize::DSL::Page do
   describe "#title" do
     it "should set page title" do
       page.title "Foo Title"
-      page.to_data.title.should == 'Foo Title'
+      expect(page.to_data.title).to eq('Foo Title')
     end
   end
 
   describe "#to_data" do
     it "should convert DSL data to DygraphsVisualize::Page" do
-      page.to_data.should be_kind_of(PulseMeter::DygraphsVisualize::Page)
+      expect(page.to_data).to be_kind_of(PulseMeter::DygraphsVisualize::Page)
     end
   end
 

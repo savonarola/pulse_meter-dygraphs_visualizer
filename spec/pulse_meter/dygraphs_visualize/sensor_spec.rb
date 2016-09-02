@@ -23,7 +23,7 @@ describe PulseMeter::DygraphsVisualize::Sensor do
 
     context "when sensor has no data" do
       it "should return nil" do
-        sensor.last_value(Time.now).should be_nil
+        expect(sensor.last_value(Time.now)).to be_nil
       end
     end
 
@@ -34,7 +34,7 @@ describe PulseMeter::DygraphsVisualize::Sensor do
             real_sensor.event(101)
           end
           Timecop.freeze(interval_start+1) do
-            sensor.last_value(Time.now, true).should == 101
+            expect(sensor.last_value(Time.now, true)).to eq(101)
           end
         end
       end
@@ -45,10 +45,10 @@ describe PulseMeter::DygraphsVisualize::Sensor do
             real_sensor.event(101)
           end
           Timecop.freeze(interval_start + 1) do
-            sensor.last_value(Time.now).should be_nil
+            expect(sensor.last_value(Time.now)).to be_nil
           end
           Timecop.freeze(interval_start + interval + 1) do
-            sensor.last_value(Time.now).should == 101
+            expect(sensor.last_value(Time.now)).to eq(101)
           end
         end
       end
@@ -69,10 +69,10 @@ describe PulseMeter::DygraphsVisualize::Sensor do
         real_sensor.event(101)
       end
       Timecop.freeze(interval_start + 1) do
-        sensor.last_point_data(Time.now, true).should == [{name: annotation, y: 101}]
-        sensor.last_point_data(Time.now).should == [{name: annotation, y: nil}]
-        sensor_with_color.last_point_data(Time.now, true).should == [{name: annotation, y: 101, color: color}]
-        sensor_with_color.last_point_data(Time.now).should == [{name: annotation, y: nil, color: color}]
+        expect(sensor.last_point_data(Time.now, true)).to eq([{name: annotation, y: 101}])
+        expect(sensor.last_point_data(Time.now)).to eq([{name: annotation, y: nil}])
+        expect(sensor_with_color.last_point_data(Time.now, true)).to eq([{name: annotation, y: 101, color: color}])
+        expect(sensor_with_color.last_point_data(Time.now)).to eq([{name: annotation, y: nil, color: color}])
       end
     end
   end
@@ -81,11 +81,11 @@ describe PulseMeter::DygraphsVisualize::Sensor do
     subject{ checked_sensor.valid? }
     context "when sensor exists" do
       let(:checked_sensor){ sensor }
-      it{ should be_true }
+      it{ is_expected.to be_truthy }
     end
     context "when sensor does not exist" do
       let(:checked_sensor){ bad_sensor }
-      it{ should be_false }
+      it{ is_expected.to be_falsey }
     end
   end
 
@@ -109,21 +109,21 @@ describe PulseMeter::DygraphsVisualize::Sensor do
     describe "returned value" do
       it "should contain sensor annotation" do
         Timecop.freeze(interval_start + interval + 1) do
-          sensor.timeline_data(Time.now - interval, Time.now).first[:name].should == annotation
+          expect(sensor.timeline_data(Time.now - interval, Time.now).first[:name]).to eq(annotation)
         end
       end
       it "should contain sensor color" do
         Timecop.freeze(interval_start + interval + 1) do
-          sensor_with_color.timeline_data(Time.now - interval, Time.now).first[:color].should == color
+          expect(sensor_with_color.timeline_data(Time.now - interval, Time.now).first[:color]).to eq(color)
         end
       end
 
       it "should contain [interval_start, value] pairs for each interval" do
         Timecop.freeze(interval_start + interval + 1) do
           data = sensor.timeline_data(Time.now - interval * 2, Time.now)
-          data.first[:data].should == [{x: interval_start.to_i * 1000, y: 101}]
+          expect(data.first[:data]).to eq([{x: interval_start.to_i * 1000, y: 101}])
           data = sensor.timeline_data(Time.now - interval * 2, Time.now, true)
-          data.first[:data].should == [{x: interval_start.to_i * 1000, y: 101}, {x: (interval_start + interval).to_i * 1000, y: 55}]
+          expect(data.first[:data]).to eq([{x: interval_start.to_i * 1000, y: 101}, {x: (interval_start + interval).to_i * 1000, y: 55}])
         end
       end
     end

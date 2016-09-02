@@ -7,7 +7,7 @@ describe PulseMeter::DygraphsVisualize::DSL::Sensor do
 
   describe '.new' do
     it "should save passed name and create DygraphsVisualize::Sensor with it" do
-      described_class.new(name).to_data.name.to_s.should == name
+      expect(described_class.new(name).to_data.name.to_s).to eq(name)
     end
   end
 
@@ -15,14 +15,14 @@ describe PulseMeter::DygraphsVisualize::DSL::Sensor do
     it "should pass args transparently to DygraphsVisualize::Sensor" do
       s = described_class.new(name)
       s.process_args color: :red
-      s.to_data.color.to_s.should == 'red'
+      expect(s.to_data.color.to_s).to eq('red')
     end
   end
 
   describe '#to_data' do
     # actually tested above
     it "should convert dsl data to sensor" do
-      described_class.new(name).to_data.should be_kind_of(PulseMeter::DygraphsVisualize::Sensor)
+      expect(described_class.new(name).to_data).to be_kind_of(PulseMeter::DygraphsVisualize::Sensor)
     end
   end
 

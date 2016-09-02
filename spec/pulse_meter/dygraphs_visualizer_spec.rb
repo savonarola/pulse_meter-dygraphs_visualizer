@@ -35,7 +35,7 @@ describe PulseMeter::DygraphsVisualizer do
         end
 
       end
-      layout.should be_kind_of(PulseMeter::DygraphsVisualize::Layout)
+      expect(layout).to be_kind_of(PulseMeter::DygraphsVisualize::Layout)
     end
   end
 end

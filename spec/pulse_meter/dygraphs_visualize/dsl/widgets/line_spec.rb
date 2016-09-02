@@ -12,28 +12,28 @@ describe PulseMeter::DygraphsVisualize::DSL::Widgets::Line do
 
   describe "#to_data" do
     it "should produce PulseMeter::DygraphsVisualize::Widgets::Area class" do
-      w.to_data.should be_kind_of(PulseMeter::DygraphsVisualize::Widgets::Line)
+      expect(w.to_data).to be_kind_of(PulseMeter::DygraphsVisualize::Widgets::Line)
     end
   end
 
   describe "#values_label" do
     it "should set values_label" do
       w.values_label "some y-axis legend"
-      w.to_data.values_label.should == "some y-axis legend"
+      expect(w.to_data.values_label).to eq("some y-axis legend")
     end
   end
 
   describe "#show_last_point" do
     it "should set show_last_point" do
       w.show_last_point true
-      w.to_data.show_last_point.should be_true
+      expect(w.to_data.show_last_point).to be_truthy
     end
   end
 
   describe "#timespan" do
     it "should set timespan" do
       w.timespan 5
-      w.to_data.timespan.should == 5
+      expect(w.to_data.timespan).to eq(5)
     end
     it "should raise exception if timespan is negative" do
       expect{ w.timespan(-1) }.to raise_exception(PulseMeter::DygraphsVisualize::DSL::BadWidgetTimeSpan)
