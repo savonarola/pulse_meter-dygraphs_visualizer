@@ -1,9 +1,7 @@
 #!/usr/bin/env rake
 require 'bundler/gem_tasks'
-require 'coffee-script'
 require 'listen'
 require 'rspec/core/rake_task'
-require 'sprockets'
 require 'yard'
 require 'yard/rake/yardoc_task'
 
