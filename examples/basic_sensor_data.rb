@@ -1,7 +1,7 @@
 $: << File.join(File.absolute_path(__FILE__), '..', 'lib')
 
 require "pulse_meter_core"
-            
+
 PulseMeter.redis = Redis.new
 
 cfg = PulseMeter::Sensor::Configuration.new(
@@ -80,9 +80,9 @@ cfg = PulseMeter::Sensor::Configuration.new(
 while true
   sleep(Random.rand)
   STDERR.puts "tick"
-  cfg.lama_count(1)
+  cfg.lama_count(Random.rand(10_000_000))
   cfg.lama_count_1min(10)
-  cfg.rhino_count(2)
+  cfg.rhino_count(-Random.rand(10_000))
   cfg.lama_average_age(Random.rand(50))
   cfg.rhino_average_age(Random.rand(100))
 
