@@ -1,0 +1,10 @@
+{
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/savonarola/pulse_meter-dygraphs_visualizer.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "coffee-script": "^1.11.0"
+  }
+}

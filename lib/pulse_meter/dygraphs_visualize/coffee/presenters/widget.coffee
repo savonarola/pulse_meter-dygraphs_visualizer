@@ -14,7 +14,7 @@ class WidgetPresenter
 			(new Date).getTimezoneOffset() * 60000
 		else
 			0
-	
+
 	options: -> {
 		labelsDiv: @legendEl
 		labelsSeparateLines: false
@@ -25,6 +25,7 @@ class WidgetPresenter
 			strokeWidth: 2
 			strokeBorderWidth: 1
 			highlightCircleSize: 5
+
 	}
 
 	mergedOptions: ->

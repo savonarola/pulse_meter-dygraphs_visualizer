@@ -23,7 +23,6 @@ Gem::Specification.new do |gem|
   gem.add_runtime_dependency('sinatra-partial')
 
   gem.add_development_dependency('aquarium')
-  gem.add_development_dependency('coffee-script')
   gem.add_development_dependency('foreman')
   gem.add_development_dependency('hashie')
   gem.add_development_dependency('listen')
@@ -34,7 +33,6 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency('redcarpet')
   gem.add_development_dependency('rspec')
   gem.add_development_dependency('simplecov')
-  gem.add_development_dependency('sprockets')
   gem.add_development_dependency('timecop')
   gem.add_development_dependency('yard')
 
