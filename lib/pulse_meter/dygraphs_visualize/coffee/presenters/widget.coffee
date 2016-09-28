@@ -28,11 +28,6 @@ class WidgetPresenter
 
 		axisLabelWidth: 80
 
-		axes:
-			y:
-				valueFormatter: (x) -> x
-				axisLabelFormatter: (x) => @formatValueLabel(x)
-
 	}
 
 	mergedOptions: ->
@@ -49,22 +44,6 @@ class WidgetPresenter
 		)
 
 	data: -> new google.visualization.DataTable
-
-	formatValueLabel: (v) ->
-		sign = if v < 0 then "-" else ""
-		absv = Math.abs(v)
-		if absv >= 1000000000
-			v.toPrecision(4)
-		else
-			if absv >= 1000000
-			 	"#{sign}#{Math.floor(absv / 1000000)}kk"
-			else
-				if absv >= 1000
-					"#{sign}#{Math.floor(absv / 1000)}k"
-				else
-					v
-
-
 
 	draw: ->
 		@chart.draw @data(), @mergedOptions()

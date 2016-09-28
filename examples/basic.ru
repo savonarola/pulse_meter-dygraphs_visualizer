@@ -8,8 +8,10 @@ layout = PulseMeter::DygraphsVisualizer.draw do |l|
 
   l.title "WunderZoo Stats"
 
+  l.dygraphs_options labels_k_m_b: true
+
   l.page "Counts" do |p|
-    
+
     p.line "Lama count" do |c|
       c.sensor :lama_count, color: '#CC1155'
       c.redraw_interval 1
