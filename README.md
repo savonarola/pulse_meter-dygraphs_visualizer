@@ -1,26 +1,17 @@
-[![Gem Version](https://badge.fury.io/rb/pulse_meter_visualizer.png)](http://badge.fury.io/rb/pulse_meter_visualizer)
-[![Build Status](https://secure.travis-ci.org/savonarola/pulse_meter_visualizer.png)](http://travis-ci.org/savonarola/pulse_meter_visualizer)
-[![Dependency Status](https://gemnasium.com/savonarola/pulse_meter_visualizer.png)](https://gemnasium.com/savonarola/pulse_meter_visualizer)
-[![Code Climate](https://codeclimate.com/github/savonarola/pulse_meter_visualizer.png)](https://codeclimate.com/github/savonarola/pulse_meter_visualizer)
-
+[![Gem Version](https://badge.fury.io/rb/pulse_meter-dygraphs_visualizer.png)](http://badge.fury.io/rb/pulse_meter-dygraphs_visualizer)
+[![Build Status](https://travis-ci.org/savonarola/pulse_meter-dygraphs_visualizer.svg?branch=master)](https://travis-ci.org/savonarola/pulse_meter-dygraphs_visualizer)
 # PulseMeter
 
-PulseMeter is a gem for fast and convenient realtime aggregating of software internal stats through Redis.
+[PulseMeter](https://github.com/savonarola/pulse-meter) is a gem for fast and convenient realtime aggregating of software internal stats through Redis.
 
-## Live Demo
-
-A small live demo for [pulse-meter](https://github.com/savonarola/pulse-meter) gem is located here: [pulse-meter.rubybox.ru](http://pulse-meter.rubybox.ru), its source code can be found here: [https://github.com/savonarola/pulse-meter-demo](https://github.com/savonarola/pulse-meter-demo)
-
-## Features
-
-The gem contains customizable web interface for [pulse-meter](https://github.com/savonarola/pulse-meter) gem.
+This gem contains DSL for customizable web interface for [PulseMeter](https://github.com/savonarola/pulse-meter). See [example usage](examples/basic.ru).
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'pulse_meter_visualizer'
+gem 'pulse_meter-dygraphs_visualizer'
 ```
 
 And then execute:
@@ -29,7 +20,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install pulse_meter_visualizer
+    $ gem install pulse_meter-dygraphs_visualizer
 
 ## Contributing
 
