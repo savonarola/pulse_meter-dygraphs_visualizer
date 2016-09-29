@@ -1,4 +1,4 @@
-[![Gem Version](https://badge.fury.io/rb/pulse_meter-dygraphs_visualizer.png)](http://badge.fury.io/rb/pulse_meter-dygraphs_visualizer)
+[![Gem Version](https://badge.fury.io/rb/pulse_meter-dygraphs_visualizer.svg)](http://badge.fury.io/rb/pulse_meter-dygraphs_visualizer)
 [![Build Status](https://travis-ci.org/savonarola/pulse_meter-dygraphs_visualizer.svg?branch=master)](https://travis-ci.org/savonarola/pulse_meter-dygraphs_visualizer)
 # PulseMeter
 
