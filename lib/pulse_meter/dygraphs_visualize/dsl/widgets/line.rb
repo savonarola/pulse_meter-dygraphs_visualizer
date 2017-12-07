@@ -8,6 +8,7 @@ module PulseMeter
 
           string_setter :values_label
           bool_setter :show_last_point
+          array_setter :filter_keys
 
           int_setter :timespan do |ts|
             raise BadWidgetTimeSpan, ts unless ts > 0

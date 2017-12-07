@@ -2,6 +2,7 @@ shared_examples_for "widget" do
   let(:interval){ 100 }
   let!(:a_sensor){ PulseMeter::Sensor::Timelined::Counter.new(:a_sensor, :ttl => 1000, :interval => interval, annotation: 'A') }
   let!(:b_sensor){ PulseMeter::Sensor::Timelined::Counter.new(:b_sensor, :ttl => 1000, :interval => interval, annotation: 'B') }
+  let!(:c_sensor){ PulseMeter::Sensor::Timelined::Counter.new(:c_sensor, :ttl => 1000, :interval => interval, annotation: 'C') }
 
   let(:widget_name){ "some_widget" }
 
@@ -11,6 +12,7 @@ shared_examples_for "widget" do
   let(:timespan){interval * 2}
   let(:a_color){'#FF0000'}
   let(:b_color){'#FFFF00'}
+  let(:c_color){'#FFFFFF'}
 
   let(:interval_start){ Time.at((Time.now.to_i / interval) * interval) }
 
@@ -32,6 +34,8 @@ shared_examples_for "widget" do
     w.width width
     w.sensor :a_sensor, color: a_color
     w.sensor :b_sensor, color: b_color
+    w.sensor :c_sensor, color: c_color
+    w.filter_keys ["A", "B"]
     w.dygraphs_options a: 1
     w.timespan timespan
     w.to_data
@@ -66,6 +70,7 @@ shared_examples_for "widget" do
         Timecop.freeze(interval_start + 1) do
           a_sensor.event(12)
           b_sensor.event(33)
+          c_sensor.event(45)
         end
         Timecop.freeze(interval_start + interval + 1) do
           a_sensor.event(111)

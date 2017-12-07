@@ -46,8 +46,9 @@ module PulseMeter
           ensure_equal_intervals!
           sensor_datas = sensors.map{ |s|
             data = s.timeline_data(from, till, show_last_point)
-            if s.type == PulseMeter::Sensor::Timelined::HashedCounter && (keys = @opts.fetch(:filter_keys, [])).any?
-              data.select { |d| keys.map(&:to_s).include?(d[:name]) }
+            keys = @opts.fetch(:filter_keys, []).map(&:to_s)
+            if keys.any?
+              data.select { |d| keys.include?(d[:name]) }
             else
               data
             end
