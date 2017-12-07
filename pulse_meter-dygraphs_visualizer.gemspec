@@ -14,7 +14,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.name          = "pulse_meter-dygraphs_visualizer"
   gem.require_paths = ["lib"]
-  gem.version       = "0.4.24"
+  gem.version       = "0.4.25"
   gem.license       = 'MIT'
 
   gem.add_runtime_dependency('pulse_meter_core')
