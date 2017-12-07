@@ -1,7 +1,7 @@
 module PulseMeter
   module DygraphsVisualize
     module DSL
-      class DArray < Array; end 
+      class DArray < Array; end
       class BadDataClass < PulseMeter::DygraphsVisualize::DSL::Error; end
       class Base
         include PulseMeter::Mixins::Utils
@@ -17,13 +17,12 @@ module PulseMeter
         end
 
         class << self
-          
           def deprecated_setter(name)
             define_method(name) do |*args|
               STDERR.puts "DEPRECATION: #{name} DSL helper does not take any effect anymore."
             end
           end
-          
+
           def setter(name, &block)
             define_method(name) do |val|
               block.call(val) if block
@@ -34,6 +33,12 @@ module PulseMeter
           def bool_setter(name)
             define_method(name) do |val|
               @opts[name] = !!val
+            end
+          end
+
+          def array_setter(name)
+            define_method(name) do |val|
+              @opts[name] = Array[*val]
             end
           end
 
@@ -67,7 +72,7 @@ module PulseMeter
               @opts[name] << val
             end
           end
-          
+
           def dsl_setter(name, klass)
             define_method(name) do |*args, &block|
               @opts[name] = create_dsl_obj(args, klass, block)

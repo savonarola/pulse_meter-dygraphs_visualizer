@@ -45,7 +45,12 @@ module PulseMeter
         def series_data(from, till)
           ensure_equal_intervals!
           sensor_datas = sensors.map{ |s|
-            s.timeline_data(from, till, show_last_point)
+            data = s.timeline_data(from, till, show_last_point)
+            if s.type == PulseMeter::Sensor::Timelined::HashedCounter && (keys = @opts.fetch(:filter_keys, [])).any?
+              data.select { |d| keys.map(&:to_s).include?(d[:name]) }
+            else
+              data
+            end
           }
           rows = []
           titles = []
@@ -100,7 +105,7 @@ module PulseMeter
 
       class Stack < Timeline; end
       class Line < Timeline; end
-      
+
     end
   end
 end
